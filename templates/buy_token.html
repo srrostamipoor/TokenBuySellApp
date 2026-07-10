@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+  <div class="container" style="margin-top:80px;">
+
+      <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;" >
+    {%include 'messages.html'%} </div>
+
+          <h3 class="default-style">Buy Token Portal</h3><hr>
+                <p class="default-style"> Please fill up the blank for buying token </p>
+
+<form action="/buy_token/" method="POST">
+    {% csrf_token %}
+    <meta charset="UTF-8">
+    <p class="default-style register-infos text-left"> <b>Each token is equal to 10 thousand tomans</b> </p>
+
+
+ <div class="form-group col-md-6">
+  <label for="id_value">Token Value </label>
+    <input  type="number" name="token-value" class="form-control" id="id_value" placeholder="Enter Your Token Value"required>
+</div>
+      <button class="btn btn-primary" type="submit"> Submit </button>
+  </div>
+</form>
+      </div></div>
+{%endblock content%}

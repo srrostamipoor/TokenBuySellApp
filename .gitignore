@@ -1,0 +1,26 @@
+# Python
+*.pyc
+__pycache__/
+env/
+venv/
+myvenv/
+.venv/
+
+# Django
+*.sqlite3
+db.sqlite3
+static/
+media/
+**/migrations/*.py
+**/migrations/*.pyc
+!**/migrations/__init__.py
+
+# Secrets -- never commit these
+.env
+*.env
+!.env.example
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

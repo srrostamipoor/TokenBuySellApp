@@ -1,0 +1,151 @@
+{% extends 'base.html'%}
+
+{%block content%}
+{%load static%}
+<title>SAR-Token</title>
+<section class="background" style="background:url({%static 'images/background.png'%})">
+</div>
+<div clsss="hero">
+<div class="container">
+<div class="row " style="padding-bottom:124px">
+<div class="col-md-6 p-0">
+    <h1 class="boihut display-4">Buy <span class="boihut-favorite">SAR</span> Token</h1>
+
+  <p class="boihut hero-text" style="color: #FFFFFF;">Buy your Tokens books from our site. You will get your product. </p>
+  <p class="lead">
+    <a class="btn btn-primary button-buy" href="/buy/" role="button">Buy Now</a>
+      <a class="btn btn-primary button-shop" href="/" role="button">Continue</a>
+  </p>
+</div>
+
+<div class="col-12 col-md-4">
+    <!-- <img class="img-fluid" src="{%static 'images/hero.png'%}"/> -->
+
+</div>
+</div></div>
+</div>
+</section>
+    <hr class="align:center"/>
+<div class="container ms-auto">
+    <div class="row" style="margin-top:-90px;background:#FFFFFF;">
+        <h3 class="text-front-page text-center pt-3 ">Transactions </h3>
+         <div >
+            
+<!-- lkk --><form action="/search/" method="POST">
+  {% csrf_token %}
+          <div class="search-panel-container bg-white border rounded d-flex gap-2 p-1.5">
+            <div >
+            </div>
+            
+            <div class="flex-grow-1 position-relative auto-search-max-height">
+            <label for="search-panel" class="visually-hidden">Search</label>
+            </div>
+            <input id="search-panel" type="text" class="form-control fs-base border-0 pe-8" autocomplete="off" spellcheck="false"
+            placeholder="Search by Txn Hash" aria-describedby="button-header-search" name="search" onkeyup="handleSearchText(this);" maxlength="68">
+           
+            
+            <div>
+              <!-- "btn fs-base btn-primary" -->
+              
+              <button class="btn fs-base btn-primary" type="submit">Search
+                <a href=""></a> 
+              </button></div>
+             <div class="text-truncate"><h6 class="d-flex align-items-center fs-sm text-dark mb-0"><div class="text-truncate me-2"></div>
+             </div>
+            <div class="search-panel-header"></div>
+            <div class="search-footer px-4 py-2 border-top d-flex justify-content-between d-none">
+                                    <div class="d-flex align-items-center">
+                                        
+                                        <div class="text-muted small me-3"></div>
+                                        
+                                        <div class="text-muted small"></div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                       
+                                        <div class="text-muted small"></div>
+                                    </div>
+                                </div></div>
+            </div>
+            <div>
+           
+            </div> </form>
+            
+            </div>
+            <!-- <a class="btn btn-primary button-buy" href="/buy/" role="button">Buy Now</a> -->
+            <!-- <a class="btn btn-primary button-shop" href="/" role="button">Continue</a> -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="tab-content col-9 " style="margin-top:60px;margin-left:30px;margin-right:20px">
+    
+                <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">TokenSymbol</th>
+                <th scope="col">Transaction Hash</th>
+                <th scope="col">Nonce</th>
+                <th scope="col">Value</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {%for transaction in transaction_id_list%}
+                <th scope="row">{{transaction.tokenSymbol}}</th>
+                <td>{{transaction.hash }}</td>
+                <td>{{transaction.nonce}}</td>
+                <td>{{transaction.value}}</td>
+                <td><a href="/show_transaction/{{transaction.hash}}"> View Transaction</a></td>
+              </tr>
+            {%endfor%}
+          
+            </tbody>
+          
+          </table>
+               <ul class="pagination">
+              <li class="page-item">
+                  {%if  transaction_id_list.has_previous %}
+                  <li class="page-item"><a href="/?page=1" class="page-link" href="">First</a></li>
+                <a class="page-link" href="/?page={{transaction_id_list.previous_page_number}}" tabindex="-1">{{transaction_id_list.previous_page_number}}</a>
+              </li>
+          
+              {%else%}
+                   <li class="page-item disabled">
+                       <a class="page-link " href="#">First </a></li>
+          
+          
+              {%endif%}
+          
+                   <li class="page-item active">
+                <a class="page-link  text-decoration-none" href="#">{{transaction_id_list.number}} <span class="sr-only">(current)</span></a>
+              </li>
+          
+                   {%if transaction_id_list.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="/?page={{transaction_id_list.next_page_number}}"> {{transaction_id_list.next_page_number}}</a>
+                <li class="page-item">
+                 <a class="page-link" href="/?page={{transaction_id_list.paginator.num_pages}}">Last </a>
+                </li>
+              </li>
+                   {%else%}
+                   <li class="page-item disabled">
+                       <a class="page-link " href="#">Last </a></li>
+                   {%endif%}
+            </ul> 
+                  </div>
+           </div>
+
+         </div>
+
+</div>
+</div>
+{%endblock content%}

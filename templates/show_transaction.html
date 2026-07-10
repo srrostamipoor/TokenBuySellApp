@@ -1,0 +1,117 @@
+{%extends 'base.html'%}
+{%block content%}
+<title> User Registration </title>
+  <div class="container" style="margin-top:60px;">
+      <div class="col-md-12" style="margin-top:20px;margin-bottom:28px;" >
+    {%include 'messages.html'%} </div>
+
+     
+<h3 class="default-style"> transaction: {{transaction_txhash}} </h3><hr>
+
+<div class="col-6">
+  <div class="row">
+    {{request.user.first_name}}
+     {{request.user.last_name}}<br>
+     Mobile: {{request.user.phone}}<br>
+     Email: {{request.user.email}}<br>
+
+  </div>
+  <div class="row">
+ <br>
+
+  </div>
+   <p class="text-center text-green"><b>Transaction Details</b></p>
+   <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Transaction Hash</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {%for transaction in transaction_items_list%}
+
+      <th scope="row">{{transaction.transaction_txhash}}</th>
+    </tr>
+
+  {%endfor%}
+
+  </tbody>
+
+  <thead>
+    <tr>
+      <th scope="col">Transaction From</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {%for transaction in transaction_items_list%}
+
+      <th scope="row">{{transaction.transaction_from}}</th>
+
+    </tr>
+
+  {%endfor%}
+
+  </tbody>
+
+
+
+  <thead>
+    <tr>
+      <th scope="col">Transaction TO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {%for transaction in transaction_items_list%}
+
+      <th scope="row">{{transaction.transaction_to}}</th>
+
+    </tr>
+
+  {%endfor%}
+
+  </tbody>
+
+
+
+
+
+
+
+
+
+</table>
+
+  <p class="text-center text-green"><b>Other Details</b></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Token Value</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Date Creation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {%for transaction in transaction_items_list%}
+     
+        <th scope="row">{{transaction.transaction_value}}</th>
+        <td>{{transaction.transaction_price}}</td>
+      <td>{{transaction.transaction_date}}</td>
+
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+
+</div>
+
+    </div>
+    </div>
+</div>
+</body>
+{%endblock content%}
+</html>
