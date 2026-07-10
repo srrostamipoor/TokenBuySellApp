@@ -85,7 +85,7 @@ without a network connection.
 ## Getting started
 
 ```bash
-git clone https://github.com/rossaYY/TokenBuySellApp.git
+git clone https://github.com/ srrostamipoor/TokenBuySellApp.git
 cd TokenBuySellApp
 
 python -m venv venv
